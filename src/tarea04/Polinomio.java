@@ -72,6 +72,7 @@ public class Polinomio {
                     salida = salida + this.getCoeficiente(i);
                 }
             }
+            //Falta añadir los if necesarios para que solo ponga "x" cuando el grado de x es 1
         }
         return salida;
     }

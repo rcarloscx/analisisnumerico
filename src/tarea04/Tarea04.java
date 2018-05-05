@@ -20,10 +20,11 @@ public class Tarea04 {
         Polinomio t = new Polinomio();
         t.add(1, 1);
         t.add(3, 0);
+        System.out.println("multiplicando : "+t.toString());
         Polinomio t2 = new Polinomio();
         t2.add(1, 1);
         t2.add(3, 0);
-
+        System.out.println("multiplicador : "+t2.toString());
         Polinomio resultado;
         resultado = Operaciones.multiplicar(t, t2);
         resultado.setCoeficiente(1, -3);//solo para probar la correcta reduccion
