@@ -27,7 +27,7 @@ public class Tarea04 {
         System.out.println("multiplicador : "+t2.toString());
         Polinomio resultado;
         resultado = Operaciones.multiplicar(t, t2);
-        resultado.setCoeficiente(1, -3);//solo para probar la correcta reduccion
+        //resultado.setCoeficiente(1, -3);//solo para probar la correcta reduccion
         resultado = Operaciones.reducir(resultado);
 
         System.out.println("polinomio: "+resultado.toString());

@@ -52,29 +52,37 @@ public class Polinomio {
         String salida = "";
         for (int i = 0; i < this.getTamanio(); i++) {
             if (this.getGrado(i) != 0) {
-                if (this.getCoeficiente(i) > 0) {
+                if (this.getCoeficiente(i) > 1) {
                     if (i == 0) {
                         salida = salida + this.getCoeficiente(i) + "x^" + this.getGrado(i);
                     } else {
                         salida = salida + "+" + this.getCoeficiente(i) + "x^" + this.getGrado(i);
                     }
-                } else {
-                    salida = salida + this.getCoeficiente(i) + "x^" + this.getGrado(i);
-                }
+                } else if (this.getCoeficiente(i)==1){
+                    salida=salida +"x^"+this.getGrado(i);
             } else {
-                if (this.getCoeficiente(i) > 0) {
-                    if (i == 0) {
-                        salida = salida + this.getCoeficiente(i);
-                    } else {
-                        salida = salida + "+" + this.getCoeficiente(i);
-                    }
-                } else {
-                    salida = salida + this.getCoeficiente(i);
-                }
+                salida=salida+this.getCoeficiente(i)+"x^"+this.getGrado(i); 
             }
+//                    salida = salida + this.getCoeficiente(i) + "x^" + this.getGrado(i);
+//                        }
+//            } else {
+//                if (this.getCoeficiente(i) > 0) {
+//                    if (i == 0) {
+//                        salida = salida + this.getCoeficiente(i);
+//                    } else {
+//                        salida = salida + "+" + this.getCoeficiente(i);
+//                    }
+//                } else {
+//                    salida = salida + this.getCoeficiente(i);
+//                }
+//            }
             //Falta añadir los if necesarios para que solo ponga "x" cuando el grado de x es 1
+        }else
+                salida = salida +"+"+this.getCoeficiente(i);
         }
         return salida;
     }
 
 }
+
+
