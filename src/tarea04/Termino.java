@@ -9,14 +9,10 @@ package tarea04;
  *
  * @author rcarlos
  */
-public class Lagrange {
+public class Termino {
 
-    public double[] inices = {2, 4, 5, 25};
-    public String[] lx;
-
-    public String[] lgrado() {
-        
-        return lx;
-    }
-
+    public double[][] t;
+    
+    
+    
 }
