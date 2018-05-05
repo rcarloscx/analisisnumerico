@@ -17,18 +17,19 @@ public class Tarea04 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // compilamos el patron
-        Pattern patron = Pattern.compile("-[1-9]*x2");
-        //Pattern patron = Pattern.compile("x\\^3");
-        //Pattern patron = Pattern.compile("-[1-9]*x2");
-        // creamos el Matcher a partir del patron, la cadena como parametro
-        Matcher encaja = patron.matcher("-33x2-4x2+3x^3");
-        while (encaja.find()) {
-            System.out.println(encaja.group());
-        }
-        // invocamos el metodo replaceAll
-        String resultado = encaja.replaceAll("");
-        System.out.println(resultado);
+        Polinomio t = new Polinomio();
+        t.add(1, 1);
+        t.add(3, 0);
+        Polinomio t2 = new Polinomio();
+        t2.add(1, 1);
+        t2.add(3, 0);
+
+        Polinomio resultado;
+        resultado = Operaciones.multiplicar(t, t2);
+        resultado.setCoeficiente(1, -3);//solo para probar la correcta reduccion
+        resultado = Operaciones.reducir(resultado);
+
+        System.out.println("polinomio: "+resultado.toString());
     }
 
 }
