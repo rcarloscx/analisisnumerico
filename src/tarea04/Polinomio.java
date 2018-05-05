@@ -51,39 +51,37 @@ public class Polinomio {
     public String toString() {
         String salida = "";
         for (int i = 0; i < this.getTamanio(); i++) {
-            if (this.getGrado(i)>1) {
+            if (this.getGrado(i) > 1) {
                 if (this.getCoeficiente(i) > 1) {
                     if (i == 0) {
                         salida = salida + this.getCoeficiente(i) + "x^" + this.getGrado(i);
                     } else {
                         salida = salida + "+" + this.getCoeficiente(i) + "x^" + this.getGrado(i);
                     }
-                } else if (this.getCoeficiente(i)==1){
-                    salida=salida +"x^"+this.getGrado(i);
-            } else {
-                salida=salida+this.getCoeficiente(i)+"x^"+this.getGrado(i); 
-            }
-        }else if(this.getGrado(i)==1){
-            if (this.getCoeficiente(i) > 1) {
+                } else if (this.getCoeficiente(i) == 1) {
+                    salida = salida + "x^" + this.getGrado(i);
+                } else {
+                    salida = salida + this.getCoeficiente(i) + "x^" + this.getGrado(i);
+                }
+            } else if (this.getGrado(i) == 1) {
+                if (this.getCoeficiente(i) > 1) {
                     if (i == 0) {
                         salida = salida + this.getCoeficiente(i) + "x";
                     } else {
                         salida = salida + "+" + this.getCoeficiente(i) + "x";
                     }
-                } else if (this.getCoeficiente(i)==1){
-                    salida=salida +"x";
+                } else if (this.getCoeficiente(i) == 1) {
+                    salida = salida + "x";
+                } else {
+                    salida = salida + this.getCoeficiente(i) + "x^" + this.getGrado(i);
+                }
+            } else if (this.getGrado(i) == 0) {
+                salida += "+" + this.getCoeficiente(i);
             } else {
-                salida=salida+this.getCoeficiente(i)+"x^"+this.getGrado(i); 
+                salida += " error";
             }
-        }else if(this.getGrado(i)==0){
-            salida+="+"+this.getCoeficiente(i);
-        }else{
-            salida+=" error";
-        }
         }
         return salida;
     }
 
 }
-
-
