@@ -44,13 +44,13 @@ public class Polinomio {
     }
 
     public int getTamanio() {
-        return coeficientes.size();
+        return coeficientes.size() - 1;
     }
 
     @Override
     public String toString() {
         String salida = "";
-        for (int i = 0; i < this.getTamanio(); i++) {
+        for (int i = 0; i <= this.getTamanio(); i++) {
             if (this.getGrado(i) > 1) {
                 if (this.getCoeficiente(i) > 1) {
                     if (i == 0) {

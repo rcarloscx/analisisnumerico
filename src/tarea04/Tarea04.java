@@ -17,32 +17,18 @@ public class Tarea04 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //Polinomio t = new Polinomio();
-        //t.add(1, 1);
-        //t.add(3, 0);
-        //System.out.println("multiplicando : "+t.toString());
-        //Polinomio t2 = new Polinomio();
-        //t2.add(1, 1);
-        //t2.add(3, 0);
-        //System.out.println("multiplicador : "+t2.toString());
-        //Polinomio resultado;
-        //resultado = Operaciones.multiplicar(t, t2);
-        //resultado.setCoeficiente(1, -3);//solo para probar la correcta reduccion
-        //resultado = Operaciones.reducir(resultado);
 
-        //System.out.println("polinomio: "+resultado.toString());
-        //Lagrange l = new Lagrange();
-        //l.lindice(2, 1);
-        Polinomio p1 = new Polinomio();
-        Polinomio p2 = new Polinomio();
-        //p1.add(1, 1);
-        
-        p2.add(1, 1);
-        p2.add(-2, 0);
-        System.out.println("tamanio: "+p2.getTamanio());
-        System.out.println("po1: "+p1.toString());
-        System.out.println("po2: "+p2.toString());
-        System.out.println("resultado"+Operaciones.reducir(Operaciones.multiplicar(p2, p1)).toString());
+        Lagrange l = new Lagrange();
+        l.lindice(4, 0);
+        System.out.println("");
+        l.lindice(4, 1);
+        System.out.println("");
+        l.lindice(4, 2);
+        System.out.println("");
+        l.lindice(4, 3);
+        System.out.println("");
+        l.lindice(4, 4);
+        System.out.println("\n");
     }
 
 }

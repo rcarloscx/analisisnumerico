@@ -20,25 +20,29 @@ public class Lagrange {
     List<Polinomio> denominadores;
 
     public void inicializar() {
-        indices = new double[2][3];
-        indices[0][0] = 0.0;
-        indices[0][1] = 1.0;
-        indices[0][2] = 2.0;
+        indices = new double[2][5];
+        indices[0][0] = 0.4;
+        indices[0][1] = 2.5;
+        indices[0][2] = 4.3;
+        indices[0][3] = 5.0;
+        indices[0][4] = 6.0;
         indices[1][0] = 2.0;
         indices[1][1] = 0.0;
         indices[1][2] = 3.0;
+        indices[1][3] = 3.0;
+        indices[1][4] = 3.0;
     }
 
     public Polinomio lindice(int grado, int indice) {
         inicializar();
         numeradores = new ArrayList<>();
         denominadores = new ArrayList<>();
-        Polinomio resultadoN = new Polinomio();
-        Polinomio resultadoD;
+        Polinomio resultado = new Polinomio();
         Polinomio numerador;
         Polinomio denominador;
         for (int i = 0; i <= grado; i++) {
             if (i != indice) {
+                //System.out.println("i: "+i);
                 numerador = new Polinomio();
                 denominador = new Polinomio();
                 numerador.add(1, 1);
@@ -51,30 +55,17 @@ public class Lagrange {
         }
 
         if (grado >= 2) {
-            //for (int i = 0; i < numeradores.size(); i++) {
-            int contador = 0;
-            int cantidad = 0;
-            do {
-                numeradores.add(Operaciones.multiplicar(numeradores.get(contador), numeradores.get(contador + 1)));
-                denominadores.add(Operaciones.multiplicar(denominadores.get(contador), denominadores.get(contador + 1)));
-                cantidad = cantidad + 1;
-                contador = contador + 2;
-            } while (grado <= contador);
             Polinomio temp1 = new Polinomio();
             Polinomio temp2 = new Polinomio();
-            for (int i = 0; i < grado - 1; i++) {
-                //temp1 = 
+            for (int i = 0; i < grado; i++) {
+                temp1 = Operaciones.reducir(Operaciones.multiplicar(temp1, numeradores.get(i)));
+                temp2 = Operaciones.reducir(Operaciones.multiplicar(Operaciones.reducir(temp2), denominadores.get(i)));
             }
-            //resultadoN = Operaciones.multiplicar(numeradores.get(0), numeradores.get(1));
-            //System.out.println("reduccion 1: "+Operaciones.reducir(denominadores.get(1)).toString());
-            //resultadoD = Operaciones.multiplicar(denominadores.get(0), denominadores.get(1));
-            //}
-            //Denominador
-            System.out.println("resultado numerador: " + resultadoN.toString());
-            //System.out.println("resultado denominador: " + resultadoD.toString());
-            //System.out.println("RESULTADOR FINAL: " + Operaciones.dividirNumero(resultadoN, resultadoD.getCoeficiente(0)).toString());
+            System.out.println("L(" + indice + "): (" + temp1.toString() + ") / " + temp2.toString());
+            resultado = Operaciones.dividirNumero(temp1, temp2.getCoeficiente(0));
+
         }
-        return resultadoN;
+        return resultado;
     }
 
 }
