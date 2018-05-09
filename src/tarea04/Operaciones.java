@@ -17,12 +17,19 @@ public class Operaciones {
         double g;
         for (int i = 0; i < multiplicando.getTamanio(); i++) {
             for (int j = 0; j < multiplicador.getTamanio(); j++) {
-                c = multiplicador.getCoeficiente(i) * multiplicando.getCoeficiente(j);
+                c = multiplicando.getCoeficiente(i) * multiplicador.getCoeficiente(j);
                 g = multiplicador.getGrado(i) + multiplicador.getGrado(j);
                 resultado.add(c, g);
             }
         }
-        return resultado;
+        if (multiplicando.getTamanio()==0) {
+            //return multiplicador;
+        }else{
+            if (multiplicador.getTamanio()==0) {
+                
+            }
+        }
+        return Operaciones.reducir(resultado);
     }
 
     public static Polinomio reducir(Polinomio polinomio) {
@@ -44,6 +51,20 @@ public class Operaciones {
             polinomio.setGrado(i, -1.0);
         }
         return salida;
+    }
+
+    public static Polinomio dividirNumero(Polinomio polinomio, double divisor) {
+        for (int i = 0; i < polinomio.getTamanio(); i++) {
+            polinomio.setCoeficiente(i, polinomio.getCoeficiente(i) / divisor);
+        }
+        return polinomio;
+    }
+
+    public static Polinomio multiplicarNumero(Polinomio polinomio, double multiplicador) {
+        for (int i = 0; i < polinomio.getTamanio(); i++) {
+            polinomio.setCoeficiente(i, polinomio.getCoeficiente(i) * multiplicador);
+        }
+        return polinomio;
     }
 
 }
