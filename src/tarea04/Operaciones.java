@@ -68,4 +68,15 @@ public class Operaciones {
         return polinomio;
     }
 
+    public static Polinomio sumar(Polinomio sumando1, Polinomio sumando2) {
+        Polinomio salida = new Polinomio();
+        for (int i = 0; i <= sumando1.getTamanio(); i++) {
+            salida.add(sumando1.getCoeficiente(i), sumando1.getGrado(i));
+        }
+        for (int i = 0; i <= sumando2.getTamanio(); i++) {
+            salida.add(sumando2.getCoeficiente(i), sumando2.getGrado(i));
+        }
+        return salida;
+    }
+
 }

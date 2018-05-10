@@ -5,8 +5,6 @@
  */
 package tarea04;
 
-import java.util.regex.*;
-
 /**
  *
  * @author rcarlos
@@ -18,17 +16,16 @@ public class Tarea04 {
      */
     public static void main(String[] args) {
 
-        Lagrange l = new Lagrange();
-        l.lindice(4, 0);
-        System.out.println("");
-        l.lindice(4, 1);
-        System.out.println("");
-        l.lindice(4, 2);
-        System.out.println("");
-        l.lindice(4, 3);
-        System.out.println("");
-        l.lindice(4, 4);
-        System.out.println("\n");
+        double[][] pares = new double[2][3];
+        pares[0][0] = 0;
+        pares[0][1] = 1;
+        pares[0][2] = 2;
+        pares[1][0] = 2;
+        pares[1][1] = 0;
+        pares[1][2] = 3;
+
+        Lagrange l = new Lagrange(pares, 2);
+        l.metodo();
     }
 
 }
