@@ -16,16 +16,22 @@ public class Tarea04 {
      */
     public static void main(String[] args) {
 
-        double[][] pares = new double[2][3];
-        pares[0][0] = 0;
-        pares[0][1] = 1;
-        pares[0][2] = 2;
-        pares[1][0] = 2;
-        pares[1][1] = 0;
-        pares[1][2] = 3;
+        double[][] pares = new double[2][4];
+        pares[0][0] = 1;
+        pares[0][1] = 2;
+        pares[0][2] = 4;
+        pares[0][3] = 5;
+        pares[1][0] = 0;
+        pares[1][1] = 2;
+        pares[1][2] = 12;
+        pares[1][3] = 21;
 
-        Lagrange l = new Lagrange(pares, 2);
+        Lagrange l = new Lagrange(pares);
         l.metodo();
+        System.out.println("error: " + l.error(0.5));
+
+        Newton n = new Newton(pares);
+        n.diferenciasDivididas();
     }
 
 }

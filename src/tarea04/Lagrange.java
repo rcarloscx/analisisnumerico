@@ -20,9 +20,9 @@ public class Lagrange {
     public List<Polinomio> numeradores;
     public List<Polinomio> denominadores;
 
-    public Lagrange(double[][] vector, int grado) {
+    public Lagrange(double[][] vector) {
         this.pOrdenados = vector;
-        this.grado = grado;
+        this.grado = vector[0].length - 1;
         this.lx = new ArrayList<>();
     }
 
@@ -51,18 +51,37 @@ public class Lagrange {
                 temp1 = Operaciones.reducir(Operaciones.multiplicar(temp1, this.numeradores.get(i)));
                 temp2 = Operaciones.reducir(Operaciones.multiplicar(Operaciones.reducir(temp2), this.denominadores.get(i)));
             }
+            System.out.println("\nL(" + indice + ")" + temp1.toString() + "  /  " + temp2.getCoeficiente(0));
             resultado = Operaciones.dividirNumero(temp1, temp2.getCoeficiente(0));
         }
         return resultado;
     }
 
-    public void metodo() {
-        Polinomio temp1 = new Polinomio();
+    public Polinomio metodo() {
+        Polinomio salida = new Polinomio();
         for (int i = 0; i <= this.grado; i++) {
-            temp1 = Operaciones.reducir(Operaciones.sumar(temp1,Operaciones.multiplicarNumero(lindice(i), this.pOrdenados[1][i])));
-            System.out.println("temporal: "+temp1.toString());
+            salida = Operaciones.reducir(Operaciones.sumar(salida, Operaciones.multiplicarNumero(lindice(i), this.pOrdenados[1][i])));
         }
-        System.out.println("final: "+temp1.toString());
+        System.out.println("\nPolinomio: " + salida.toString() + "\n");
+        return salida;
+    }
+
+    public double error(double x) {
+        double er;
+        double acomulador = 1;
+        for (int i = 0; i <= this.grado; i++) {
+            acomulador = acomulador * (x - pOrdenados[0][i]);
+        }
+        er = (pOrdenados[1][this.grado] / factorial(this.grado + 1)) * (acomulador);
+        return er;
+    }
+
+    public int factorial(int numero) {
+        if (numero == 0) {
+            return 1;
+        } else {
+            return numero * factorial(numero - 1);
+        }
     }
 
 }
