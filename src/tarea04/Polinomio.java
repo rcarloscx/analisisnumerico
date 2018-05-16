@@ -54,31 +54,33 @@ public class Polinomio {
             if (this.getGrado(i) > 1) {
                 if (this.getCoeficiente(i) > 1) {
                     if (i == 0) {
-                        salida = salida + this.getCoeficiente(i) + "x^" + this.getGrado(i);
-                    } else {
-                        salida = salida + "+" + this.getCoeficiente(i) + "x^" + this.getGrado(i);
+                        salida = salida+ " +" + this.getCoeficiente(i) + "x^" + Math.round(this.getGrado(i));
+                    } else{
+                        salida = salida+ " +" + this.getCoeficiente(i) + "x^" + Math.round(this.getGrado(i));
                     }
                 } else if (this.getCoeficiente(i) == 1) {
-                    salida = salida + "x^" + this.getGrado(i);
-                } else {
-                    salida = salida + this.getCoeficiente(i) + "x^" + this.getGrado(i);
+                    salida = salida+ " +" + "x^" + Math.round(this.getGrado(i));
+                } else if (this.getCoeficiente(i) > 0) {
+                    salida = salida+" +" + this.getCoeficiente(i) + "x^" + Math.round(this.getGrado(i));
+                } else{
+                    salida = salida+" "+ this.getCoeficiente(i) + "x^" + Math.round(this.getGrado(i));
                 }
             } else if (this.getGrado(i) == 1) {
                 if (this.getCoeficiente(i) > 1) {
                     if (i == 0) {
-                        salida = salida + this.getCoeficiente(i) + "x";
+                        salida = salida+" +" + this.getCoeficiente(i) + "x";
                     } else {
-                        salida = salida + "+" + this.getCoeficiente(i) + "x";
+                        salida = salida + " +" + this.getCoeficiente(i) + "x";
                     }
                 } else if (this.getCoeficiente(i) == 1) {
-                    salida = salida + "x";
+                    salida = salida+" +" + "x";
                 } else {
-                    salida = salida + this.getCoeficiente(i) + "x^" + this.getGrado(i);
+                    salida = salida+" " + this.getCoeficiente(i) + "x";
                 }
             } else if (this.getGrado(i) == 0) {
-                salida += "+" + this.getCoeficiente(i);
+                salida += " +" + this.getCoeficiente(i);
             } else {
-                salida += " error";
+                salida += " error ";
             }
         }
         return salida;
