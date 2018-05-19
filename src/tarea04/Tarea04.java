@@ -37,6 +37,7 @@ public class Tarea04 {
         Newton n = new Newton(pares);
         n.diferenciasDivididas();
         n.metodo();
+        System.out.println("el error de polinomio es: "+n.error(0.8));
     }
 
 }

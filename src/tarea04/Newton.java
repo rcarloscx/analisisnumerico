@@ -50,7 +50,7 @@ public class Newton {
         }
         for (int i = 0; i < tabla.length; i++) {
             for (int j = 0; j < tabla[0].length; j++) {
-                System.out.print(""+tabla[i][j]+"\t\t");
+                System.out.print("" + tabla[i][j] + "\t\t");
             }
             System.out.println("\n");
         }
@@ -76,13 +76,24 @@ public class Newton {
         for (int i = 0; i < n; i++) {
             numerador = new Polinomio();
             numerador.add(1, 1);
-            numerador.add(-tabla[0][tabla[0].length-i-1], 0);
+            numerador.add(-tabla[0][tabla[0].length - i - 1], 0);
             salida = Operaciones.reducir(Operaciones.multiplicar(salida, numerador));
         }
-        if (n==0) {
+        if (n == 0) {
             salida.add(1, 0);
         }
         return salida;
     }
 
+    public double error(double x) {
+        double error;
+        double acomulador = 1;
+        int posicion = tabla[0].length - 1;
+        for (int i = 0; i < diferencias.length; i++) {
+            acomulador = acomulador * (x - tabla[0][posicion]);
+            posicion = posicion - 1;
+        }
+        error = diferencias[diferencias.length - 1] * acomulador;
+        return error;
+    }
 }
