@@ -39,6 +39,9 @@ public class Tarea04 {
         n.diferenciasDivididas();
         //n.metodo();
         
+        Polinomio po= n.metodo(true);
+        System.out.println(po.salidaPolinomio());
+        
         
     }
 

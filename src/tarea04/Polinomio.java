@@ -86,4 +86,41 @@ public class Polinomio {
         return salida;
     }
 
+    public String salidaPolinomio() {
+        String polinomio="";
+        for (int i = 0; i <= this.getTamanio(); i++) {
+             if (this.getGrado(i) > 1) {
+                if (this.getCoeficiente(i) > 1) {
+                    if (i == 0) {
+                        polinomio = polinomio+ "+((+" + this.getCoeficiente(i) + ")*(x^" + this.getGrado(i)+"))";
+                    } else{
+                        polinomio = polinomio+ "+((+" + this.getCoeficiente(i) + ")*(x^" + this.getGrado(i)+"))";
+                    }
+                } else if (this.getCoeficiente(i) == 1) {
+                    polinomio = polinomio+ "+((+" + ")*(x^" + this.getGrado(i)+"))";
+                } else if (this.getCoeficiente(i) > 0) {
+                    polinomio = polinomio+"+((+" + this.getCoeficiente(i) + ")*(x^" + this.getGrado(i)+"))";
+                } else{
+                    polinomio = polinomio+"+(("+ this.getCoeficiente(i) + ")*(x^" + this.getGrado(i)+"))";
+                }
+            } else if (this.getGrado(i) == 1) {
+                if (this.getCoeficiente(i) > 1) {
+                    if (i == 0) {
+                        polinomio = polinomio+"+((+" + this.getCoeficiente(i) + ")*(x))";
+                    } else {
+                        polinomio = polinomio + "+((+" + this.getCoeficiente(i) + ")*(x))";
+                    }
+                } else if (this.getCoeficiente(i) == 1) {
+                    polinomio = polinomio+"+((+" + ")x)";
+                } else {
+                    polinomio = polinomio+"+((" + this.getCoeficiente(i) + ")*(x))";
+                }
+            } else if (this.getGrado(i) == 0) {
+                polinomio += "(+" + this.getCoeficiente(i)+")";
+            } else {
+                polinomio += " error ";
+            }
+        }
+        return polinomio;
+    }
 }
