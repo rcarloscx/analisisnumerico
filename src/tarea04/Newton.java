@@ -13,9 +13,11 @@ public class Newton {
 
     public double[][] tabla;
     public double[] diferencias;
+    public double[][] pares;
 
     public Newton(double[][] vector) {
         this.tabla = new double[vector[0].length + 1][vector[0].length];
+        this.pares = vector;
         int posicion = vector[0].length - 1;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < vector[0].length; j++) {
@@ -48,9 +50,9 @@ public class Newton {
             }
             cantidad = cantidad - 1;
         }
-        for (int i = 0; i < tabla.length; i++) {
+        for (double[] tabla1 : tabla) {
             for (int j = 0; j < tabla[0].length; j++) {
-                System.out.print("" + tabla[i][j] + "\t\t");
+                System.out.print("" + tabla1[j] + "\t\t");
             }
             System.out.println("\n");
         }
@@ -61,13 +63,43 @@ public class Newton {
         return this.diferencias;
     }
 
-    public void metodo() {
+    public double diferencia(int n) {
+        double dif = 0.0;
+        int inicio = 0;
+        int fin = 0 + n;
+        if (n == 2) {
+            dif = (pares[1][fin]-pares[1][inicio]) / (1);
+        } else {
+
+        }
+        return 0.0;
+    }
+
+    public Polinomio parametro(int n) {
+        Polinomio salida = new Polinomio();
+        for (int i = n - 1; i >= 0; i--) {
+            salida.add(pares[1][i], 0);
+        }
+        return salida;
+    }
+
+    public double getX(double eval) {
+        double x = 0.0;
+        for (int i = 0; i < pares[0].length; i++) {
+            if (eval == pares[1][i]) {
+                x = pares[1][i];
+            }
+        }
+        return x;
+    }
+
+    public String metodo() {
         Polinomio salida = new Polinomio();
         for (int i = 0; i < this.diferencias.length; i++) {
             Polinomio devuelto = operador(i);
             salida = Operaciones.reducir(Operaciones.sumar(salida, Operaciones.multiplicarNumero(devuelto, this.diferencias[i])));
         }
-        System.out.println("polinomio final: " + salida.toString());
+        return salida.toString();
     }
 
     public Polinomio operador(int n) {

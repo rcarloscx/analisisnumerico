@@ -34,10 +34,12 @@ public class Tarea04 {
         l.metodo();
         System.out.println("error: " + l.error(0.5));
 
+        System.out.println("\n\nPOLINOMIO DE NEWTON------------------------------------\n\n");
         Newton n = new Newton(pares);
         n.diferenciasDivididas();
-        n.metodo();
-        System.out.println("el error de polinomio es: "+n.error(0.8));
+        //n.metodo();
+        
+        
     }
 
 }
