@@ -41,7 +41,8 @@ public class Tarea04 {
         
         Polinomio po= n.metodo(true);
         System.out.println(po.salidaPolinomio());
-        
+        Funcion f = new Funcion(po.salidaPolinomio());
+        System.out.println("Evaluando el polinomio: "+f.eval(1.2));
         
     }
 
