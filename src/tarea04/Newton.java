@@ -50,56 +50,51 @@ public class Newton {
             }
             cantidad = cantidad - 1;
         }
-        for (double[] tabla1 : tabla) {
-            for (int j = 0; j < tabla[0].length; j++) {
-                System.out.print("" + tabla1[j] + "\t\t");
-            }
-            System.out.println("\n");
-        }
-        for (int i = 0; i < this.diferencias.length; i++) {
-            System.out.println("diferencia " + i + " :" + this.diferencias[i]);
-        }
-        System.out.println("\n");
         return this.diferencias;
     }
 
-    public double diferencia(int n) {
-        double dif = 0.0;
-        int inicio = 0;
-        int fin = 0 + n;
-        if (n == 2) {
-            dif = (pares[1][fin]-pares[1][inicio]) / (1);
-        } else {
-
+    public double[] diferenciasPorFormula() {
+        this.diferencias[0] = pares[1][0];
+        for (int i = 1; i < diferencias.length; i++) {
+            this.diferencias[i] = diferencia(i, i, 0);
         }
-        return 0.0;
+        return this.diferencias;
     }
 
-    public Polinomio parametro(int n) {
-        Polinomio salida = new Polinomio();
-        for (int i = n - 1; i >= 0; i--) {
-            salida.add(pares[1][i], 0);
+    public double diferencia(int n, int inicio, int fin) {
+        double dif;
+        int finSumando = inicio - (n - 1);
+        int inicioRestando = fin + (n - 1);
+        if (n <= 1) {
+            dif = (pares[1][inicio] - pares[1][fin]) / (getX(pares[1][inicio]) - getX(pares[1][fin]));
+        } else {
+            dif = (diferencia(n - 1, inicio, finSumando) - diferencia(n - 1, inicioRestando, fin)) / (getX(pares[1][inicio] - getX(pares[1][fin])));
         }
-        return salida;
+        return dif;
     }
 
     public double getX(double eval) {
         double x = 0.0;
         for (int i = 0; i < pares[0].length; i++) {
             if (eval == pares[1][i]) {
-                x = pares[1][i];
+                x = pares[0][i];
             }
         }
         return x;
     }
 
-    public String metodo() {
+    public Polinomio metodo(boolean formula) {
         Polinomio salida = new Polinomio();
+        if (formula) {
+            this.diferencias = diferenciasDivididas();
+        } else {
+            this.diferencias = diferenciasPorFormula();
+        }
         for (int i = 0; i < this.diferencias.length; i++) {
             Polinomio devuelto = operador(i);
             salida = Operaciones.reducir(Operaciones.sumar(salida, Operaciones.multiplicarNumero(devuelto, this.diferencias[i])));
         }
-        return salida.toString();
+        return salida;
     }
 
     public Polinomio operador(int n) {
