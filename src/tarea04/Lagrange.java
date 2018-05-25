@@ -51,7 +51,6 @@ public class Lagrange {
                 temp1 = Operaciones.reducir(Operaciones.multiplicar(temp1, this.numeradores.get(i)));
                 temp2 = Operaciones.reducir(Operaciones.multiplicar(Operaciones.reducir(temp2), this.denominadores.get(i)));
             }
-            System.out.println("\nL(" + indice + ")" + temp1.toString() + "  /  " + temp2.getCoeficiente(0));
             resultado = Operaciones.dividirNumero(temp1, temp2.getCoeficiente(0));
         }
         return resultado;
@@ -62,7 +61,6 @@ public class Lagrange {
         for (int i = 0; i <= this.grado; i++) {
             salida = Operaciones.reducir(Operaciones.sumar(salida, Operaciones.multiplicarNumero(lindice(i), this.pOrdenados[1][i])));
         }
-        System.out.println("\nPolinomio: " + salida.toString() + "\n");
         return salida;
     }
 

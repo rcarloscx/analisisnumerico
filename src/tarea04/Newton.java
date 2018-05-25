@@ -68,7 +68,7 @@ public class Newton {
         if (n <= 1) {
             dif = (pares[1][inicio] - pares[1][fin]) / (getX(pares[1][inicio]) - getX(pares[1][fin]));
         } else {
-            dif = (diferencia(n - 1, inicio, finSumando) - diferencia(n - 1, inicioRestando, fin)) / (getX(pares[1][inicio] - getX(pares[1][fin])));
+            dif = (diferencia(n - 1, inicio, finSumando) - diferencia(n - 1, inicioRestando, fin)) / (getX(pares[1][inicio]) - getX(pares[1][fin]));
         }
         return dif;
     }
@@ -123,4 +123,21 @@ public class Newton {
         error = diferencias[diferencias.length - 1] * acomulador;
         return error;
     }
+
+    public double[] getDiferencias() {
+        return diferencias;
+    }
+
+    public void setDiferencias(double[] diferencias) {
+        this.diferencias = diferencias;
+    }
+
+    public double[][] getTabla() {
+        return tabla;
+    }
+
+    public void setTabla(double[][] tabla) {
+        this.tabla = tabla;
+    }
+
 }

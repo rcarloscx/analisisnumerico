@@ -17,38 +17,11 @@ public class Tarea04 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-//        double[][] pares = new double[2][6];
-//        pares[0][0] = 0.15;
-//        pares[0][1] = 2.30;
-//        pares[0][2] = 3.15;
-//        pares[0][3] = 4.85;
-//        pares[0][4] = 6.25;
-//        pares[0][5] = 7.95;
-//        pares[1][0] = 0.15074;
-//        pares[1][1] = 2.1162;
-//        pares[1][2] = 3.1964;
-//        pares[1][3] = 3.1964;
-//        pares[1][4] = 2.9564;
-//        pares[1][5] = 1.9213;
-//
-//        Lagrange l = new Lagrange(pares);
-//        l.metodo();
-//        System.out.println("error: " + l.error(0.5));
-//
-//        System.out.println("\n\nPOLINOMIO DE NEWTON------------------------------------\n\n");
-//        Newton n = new Newton(pares);
-//        n.diferenciasDivididas();
-//        //n.metodo();
-//        
-//        Polinomio po= n.metodo(true);
-//        System.out.println(po.salidaPolinomio());
-//        Funcion f = new Funcion(po.salidaPolinomio());
-//        System.out.println("Evaluando el polinomio: "+f.eval(1.2));
-
-        frmPrincipal frm  = new frmPrincipal();
-        frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
+        Polinomio p = new Polinomio();
+        p.add(2, 2);
+        p.add(10, 0);
+        p.add(5, 3);
+        System.out.println(""+p.toString());
         
     }
 
